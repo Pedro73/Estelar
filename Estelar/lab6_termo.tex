@@ -1,0 +1,561 @@
+\documentclass[2pt]{article}
+
+% Margen de 1 pulgada por lado
+\usepackage{fullpage}
+% Incluye gráficas
+\usepackage{graphicx}
+\usepackage{float}
+% Packages para matemáticas, por la American Mathematical Society
+\usepackage{amssymb}
+\usepackage{amsmath}
+% Desactivar hyphenation
+\usepackage[none]{hyphenat}
+% Saltar entre párrafos - sin sangrías
+\usepackage{parskip}
+% Español y UTF-8
+\usepackage[spanish, es-tabla]{babel}
+\usepackage[utf8]{inputenc}
+% Links en el documento
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{gensymb}
+\usepackage{longtable}
+
+
+\begin{document}
+
+% Membrete 
+\begin{minipage}{2.3cm}
+\includegraphics[width=2cm]{img/logo.jpg}
+\vspace{0.5cm} % Altura de la corona del logo, así el texto queda alineado verticalmente con el círculo del logo.
+\end{minipage}
+\begin{minipage}{\linewidth}
+\textsc{\raggedright \footnotesize
+Pontificia Universidad Católica de Chile \\
+Astrofísica Estelar \\
+Segundo Semestre 2015 \\}
+\end{minipage}
+
+
+% Titulo
+\begin{center}
+\vspace{0.5cm}
+{\Large\bf Tarea 2.}\\
+\vspace{0.2cm}
+ Gonzalo Prieto Lyon \\
+24 de Septiembre del 2015\\
+%\vspace{0.2cm}
+\vspace{0.2cm}
+\rule{\textwidth}{0.1mm}
+\end{center}
+
+\section{}
+Recordar que la presión para un fluido ideal es:
+\begin{equation}
+P=NKT
+\end{equation}
+Donde N es el número de partículas libres por unidad de volumen.
+
+Ahora definimos dos nuevas variables, $\mu$ será el peso molar promedio del gas, $M_{\mu}$ es la masa de un amu (atomic mass unit, un amu será aproximadamente la mása de un protón), luego la densidad se define como:
+
+\begin{equation}
+\rho=N\cdot\mu\cdot M_{\mu}
+\end{equation}
+
+Defieniendo $N_0=1/M_{\mu}=6.0225\cdot 10^{-23} mol^{-1}$(número de avogadro), ahora despejando N:
+\begin{equation}
+N=\frac{N_0\cdot\rho}{\mu}
+\end{equation}
+
+Sustituyendo en (1):
+
+\begin{equation}
+P=\frac{N_0\cdot k}{\mu} \rho\cdot T
+\end{equation}
+
+Tres nuevas variables que se incorporaran a las fórmulas son, $X_Z$ será la fracción del elemento Z(número atómico) en el gas. $n_Z$ será la cantidad de partículas libres entregadas por cada átomo al gas (suponiendo ionización total), donde $n_Z=Z+1$ siendo Z=número de electrones y +1 vendría del núcleo atómico. Por último $A_Z$ es el peso atómico del elemento Z.
+
+Sabido esto se define:
+\begin{equation}
+N_Z=\rho\frac{X_Z}{A_Z}\cdot N_0
+\end{equation}
+
+Luego la cantidad total de particulas libres por centrimetro cúbico para todos los elementos será la sumatoria:
+\begin{equation}
+N=\sum N_z\cdot n_z =\rho N_0  \sum \frac{X_Z n_Z}{A_Z}
+\end{equation}
+
+Sustituyendo esto último en (3):
+\begin{equation}
+\mu=(\sum \frac{X_Z\cdot n_Z}{A_Z})^{-1}
+\end{equation}
+
+Ahora, suponiendo que en una estrella los dos elementos de mayor abundancia son Hidrógeno y Helio, les damos abundancias ($X_Z$) X e Y respectivamente, todos los demás elementos que podrían estar presentes en la estrella luego tienen abundancia (1-X-Y). También notar que los valores $n_Z=Z+1$ para H y He son $n_H=2$, $n_{He}=3$. Los pesos atómicos normalmente se rigen por $A_Z=2Z+2$.
+Luego:
+\begin{equation}
+\mu=(\frac{X\cdot n_H}{A_H} + \frac{Y\cdot n_{He}}{A_{He}}+ (1-X-Y)<\frac{n_Z}{A_Z}>)^{-1}
+\end{equation}
+Donde $<\frac{n_Z}{A_Z}>$ será la media para todos los elementos más pesados que el helio.
+Luego remplazando los valores vistos anteriormente y con $<\frac{n_Z}{A_Z}>=\frac{Z+1}{2Z+2}=1/2$:
+
+\begin{equation}
+\mu= \frac{2}{1+3X+\frac{Y}{2}}
+\end{equation}
+
+
+Otro resultado que podemos obtener con una demostración similar, pero para la densidad número de electrones. Tomando (6) pero para electrones, con $n_Z->(n_Z-1)$ ya que no nos interesan los nucleos atómicos. Luego reemplazando $n_Z=Z+1$ y $N_Z=(5)$
+
+\begin{equation}
+n_e=\sum N_Z(n_Z-1)=\rho N_0 \sum \frac{X_Z Z}{A_Z}
+\end{equation}
+
+Usando el mismo procedimiento, las constantes anteriores y aproximando $<\frac{Z}{A_Z}> =\frac{1}{2}$:
+
+\begin{equation}
+n_e=\rho N_0 (X + \frac{2Y}{4} + (1-X-Y)<\frac{Z}{A_Z}> ) = \frac{1}{2}\rho N_0 (1+X)
+\end{equation}
+
+Con esto se puede definir la nueva variable $\mu_e$ $"$peso molecular medio por electrón$"$, la cual entrega la media de amu's por cada electrón del gas y posee una forma similar a (7):
+
+\begin{equation}
+\frac{1}{\mu_e}=\sum \frac{X_Z\cdot Z}{A_Z}
+\end{equation}
+Tomando lo anterior y reemplazando en (10), obtenemos una fórmula de $\mu_e$ simplificada que solo depende de la abundancia de hidrógeno:
+
+\begin{equation}
+\mu_e=\frac{2}{1+X}
+\end{equation}
+
+\section{}
+
+\subsection*{2-2}
+
+\subsubsection*{a)}
+
+Primero usando la ecuación (8), sin aproximar pesos atómicos ($A_H=1.008$ $A_{He}=4.004$), tendremos:
+
+\begin{equation}
+\mu=[\frac{2}{1.008}]^{-1}=0.504
+\end{equation} 
+
+Usando la aproximación, ecuación (9):
+
+\begin{equation}
+\mu = \frac{2}{1+3} = 0.5
+\end{equation}
+
+Luego hay una diferencia de 0.004 (0.8$\%$)
+
+\subsubsection*{b)}
+
+Del mismo modo si solo tenemos helio (Y=1):
+
+\begin{equation}
+\mu=[\frac{3}{4.004}]^{-1}=1.334
+\end{equation} 
+
+Usando la aproximación, ecuación (9):
+
+\begin{equation}
+\mu = \frac{2}{1+1/2} = 1.333
+\end{equation}
+
+Existe aproximadamente una diferencia de 0.001 (0.07$\%$)
+
+\subsubsection*{c)}
+
+Si solo tenemos metales(Z>2), es decir X=0, Y=0, tendremos:
+
+\begin{equation}
+\mu=\frac{2}{1+0+0}=2
+\end{equation} 
+
+
+\subsection*{2-3}
+
+Para esta pregunta se usará una variación de la ecuación (8) para electrones proveniente de:
+
+\begin{equation}
+\frac{1}{\mu_e}=\sum\frac{X_Z\cdot Z}{A_Z}
+\end{equation}
+
+\begin{equation}
+\mu_e=[\frac{X\cdot 1}{1.008} + \frac{Y\cdot 2}{4.004} + (1-X-Y)<\frac{Z}{A_Z}>]^{-1}
+\end{equation}
+
+Usando la aproximación para ionización total sugerida en el libro Clayton, $<\frac{Z}{A_Z}>=1/2$ obtendremos los siguientes resultados:
+
+\subsubsection*{a)}
+
+Si solo tenemos hidrógeno(X=1):
+
+\begin{equation}
+\mu_e=[\frac{1\cdot 1}{1.008}]^{-1}=1.008
+\end{equation}
+
+Esto nos dice que por cada electrón presente existe una masa atómica, lo cual tiene sentido ya que el hidrogeno solo posee un protón en su núcleo. Por lo tanto por cada electrón libre entregado al gas existirá una masa atómica (1 protón).
+
+\subsubsection*{b)}
+
+Si solo tenemos helio (Y=1):
+
+\begin{equation}
+\mu_e=[\frac{1\cdot 2}{4.004}]^{-1}=2.002
+\end{equation}
+
+Con la misma lógica anterior, el helio posee 2 electrones y su núcleo posee 2 protones y 2 neutrones, por lo que su masa atómica es de 4.
+
+\subsection*{c)}
+
+
+Luego si tenemos $X=Y=\frac{1}{2}$:
+
+\begin{equation}
+\mu_e=[\frac{\frac{1}{2}\cdot 1}{1.008} + \frac{\frac{1}{2} \cdot 2}{4.004}]^{-1}=1.34
+\end{equation}
+
+
+\subsection*{d)}
+
+Para $X=Z=\frac{1}{2}$:
+
+\begin{equation}
+\mu_e=[\frac{\frac{1}{2}\cdot 1}{1.008} + \frac{1}{2} \cdot \frac{1}{2}]^{-1}=1.34
+\end{equation}
+
+\subsection*{e)}
+
+Ahora para Z=1, y obteniendo el promedio $<\frac{Z}{A_Z}>$ para $C^{12}$ y $O^{14}$:
+
+\begin{equation}
+<\frac{Z}{A_Z}>=\frac{\frac{6}{12}+\frac{8}{14}}{2}=\frac{15}{28}
+\end{equation}
+
+Luego:
+\begin{equation}
+\mu_e=[1\cdot \frac{15}{28}]^{-1}=\frac{28}{15}
+\end{equation}
+
+\section{}
+\newpage
+
+
+
+\section{}
+
+Tomando la igualdad entre radio final e inicial $r_f=y\cdot r_i$, se buscará la relación entre estos y la densidad, presión y temperatura. Será importante notar que la ecuación anterior se puede anotar como:
+
+\begin{equation}\label{eq:asd}
+y=\frac{r_f}{r_i}
+\end{equation}
+
+Para encontrar la densidad recordemos que el radio se relaciona con el volumen como $r^{3}  \propto V$, luego es posible definir una nueva relación $V_{f}=y^3\cdot V_i$, entonces como la densidad es definida por $\rho = \frac{m}{v}$ es correcto decir $\rho_i \propto \frac{1}{r^3_i}$ y por lo tanto:
+
+\begin{equation}
+\rho_f \propto \frac{1}{r^3_f} = \frac{1}{y^3\cdot r^3_i}
+\end{equation}
+
+Con lo que queda clara la relación:
+
+\begin{equation}
+\rho_f=\frac{\rho_i}{y^3} ; \frac{\rho_f}{\rho_i}=\frac{1}{y^3}
+\end{equation}
+
+Por último para la densidad, incorporando \ref{eq:asd} se obtiene lo deseado:
+
+\begin{equation}
+\frac{\rho_f}{\rho_i}=(\frac{R_i}{R_f})^3
+\end{equation}
+
+
+Luego para encontrar las igualdades de presión-radio usaremos las ecuaciones de equilibrio hidrostático:
+
+
+
+\begin{subequations}\label{ayy}
+\begin{align}
+        \frac{dP_i}{dr_i}=- \frac{G\cdot M_i \cdot \rho_i}{r^2_i}     \\
+        \frac{dP_f}{dr_f}=- \frac{G\cdot M_f \cdot \rho_f}{r^2_i} \\
+        M_f=M_i
+\end{align}
+\end{subequations}
+
+Es importante considerar que como la masa no cambia (solo se colapsa), luego $M_f=M_i$, entonces podemos despejar las masas de ambas ecuaciones e igualarlas. Con lo que obtendremos:
+\begin{equation}
+-\frac{dP_i}{dr_i}\cdot \frac{r^2_i}{\rho_i \cdot G} = -\frac{dP_f}{dr_f}\cdot \frac{r^2_f}{\rho_f \cdot G}
+\end{equation}
+
+Luego despejando todo lo posible y utilizando las relaciones densidad-radio $\rho_i = \frac{1}{r^3_i}$, $\rho_f = \frac{1}{y\cdot r^3_i}$ (con lo que también es correcto decir $dr_f=y\cdot dr_i$) se obtiene:
+
+ \begin{subequations}\label{ayds}
+\begin{align}
+        \frac{1}{\rho_i} \cdot \frac{dP_i}{dr_i} \cdot r^2_i= \frac{1}{\rho_f} \cdot \frac{dP_f}{dr_f} \cdot r^2_f \\        
+        r^3_i \cdot \frac{dP_i}{dr_i} \cdot r^2_i = y^3 r^3_i \cdot \frac{dP_f}{y dr_i} \cdot y^2 r^2_i   \\ 
+        dP_i=y^4 dP_f  \\
+        P_i=y^4 P_f     
+\end{align}
+\end{subequations}
+
+Luego usando \ref{eq:asd} en lo anterior:
+
+\begin{equation}
+\frac{P_f}{P_i}=(\frac{R_i}{R_f})^4
+\end{equation}
+
+
+
+
+Ahora para encontrar la relacion radio-temperatura, se debe considerar que se habla de un fluido ideal, por lo tanto entra en juego la ecuación de estado y prporción:
+
+\begin{subequations}
+\begin{align}
+        PV=NKT \\
+        PV \propto T
+\end{align}
+\end{subequations}
+
+Entonces de modo similar a \ref{ayy} y luego usando \ref{ayds}d y la relación radio-volumen se establecen dos ecuaciones:
+
+    
+\begin{subequations}
+\begin{align}
+        T_i \propto P_i V_i \\
+        T_f \propto P_f V_f \\
+        T_f \propto \frac{P_i}{y^4}\cdot y^3 V_i
+\end{align}
+\end{subequations}
+
+Luego igualando $P_i$ o $V_i$ y usando \ref{eq:asd} se obitene la relación :
+
+\begin{subequations}
+\begin{align}
+        \frac{T_i}{T_f}=y \\
+        \frac{T_i}{T_f}=\frac{R_i}{R_f}
+\end{align}
+\end{subequations}
+
+
+\section{}
+
+Para calcular la energía potencial gravitatoria se debe primero resolver la integral:
+
+\begin{equation}
+U=-\int^R_0 \frac{G m(r)  \rho (r)}{r} \cdot 4 \pi r^2 dr
+\end{equation}
+
+Los valores de $\rho (r)$ nos son dados en el enunciado, pero también será necesario obtener la función $m(r)$, para ello se debe resolver la integral:
+
+\begin{equation}
+m(r)=\int^r_0 \rho(r)\cdot 4\pi r^2 dr
+\end{equation}
+
+Por último, una vez obtenido los potenciales, será posible definir la presión promedio para que haya equilibrio hidrostático (ecuación del virial):
+
+\begin{equation}
+<P>=\frac{-U}{3V}
+\end{equation}
+
+\subsubsection{a)}
+
+Tenemos $\rho (r) = \rho$
+
+Para obtener $m(r)$:
+
+\begin{equation}
+m(r)=\int^r_0 \rho\cdot 4\pi r^2 dr= \frac{4}{3}\pi r^3 \rho
+\end{equation}
+
+Entonces la integral para obtener U será:
+
+\begin{subequations}
+\begin{align}
+		U=-\int^R_0 \frac{G \frac{4\pi r^3 \rho}{3}  \rho}{r} \cdot 4 \pi r^2 dr = -G\frac{16\pi^2}{3} \rho^2 \int^R_0 r^4 dr \\
+		U=-G\frac{16\pi^2}{15} \rho^2 R^5
+\end{align}
+\end{subequations}
+ Por lo tanto la presión promedio es:
+ 
+\begin{equation}
+<P>=\frac{1}{3V} \cdot G\frac{16\pi^2}{15} \rho^2 R^5
+\end{equation}
+
+\subsubsection{b)}
+
+Tenemos $\rho (r)=\rho_c (1-\frac{r}{R})$:
+
+$m(r)$ la forma:
+\begin{subequations}
+\begin{align}
+		m(r)=\int^r_0 \rho_c (1-\frac{r}{R}) \cdot 4\pi r^2 dr \\
+		m(r)=\rho_c (\int^r_0 4\pi r^2 dr - \int^r_0 \frac{4\pi r^3}{R}) \\
+		m(r)=\rho_c (\frac{4\pi}{3} r^3 - \frac{1}{R} \pi r^4)
+\end{align}
+\end{subequations}
+
+Luego :
+
+\begin{subequations}
+\begin{align}
+		U=-\int^R_0 \frac{G\rho_c (\frac{4}{3}\pi r^3 - \frac{1}{R}\pi r^4)\cdot \rho_c (1-\frac{r}{R})}{r} \cdot 4\pi r^2 dr \\
+		U=-G\rho^2_c 4\pi \int^R_0 (\frac{4}{3} \pi r^4  - \frac{7}{3R} \pi r^5 + \frac{\pi r^6}{R^2}) dr \\
+		U=-G\rho_c^2 4\pi (\frac{\pi R^5}{3} - \frac{7 R^5}{18} + \frac{pi R^5}{7}) \\
+		U=-G4\pi  \cdot \frac{13\pi R^5}{630}
+\end{align}
+\end{subequations}
+
+Por lo tanto la presión promedio será:
+
+\begin{subequations}
+\begin{align}
+		<P>=\frac{1}{3V} \cdot G4\pi  \cdot \frac{13\pi R^5}{630}\\
+		<P>=\frac{1}{3} \cdot G \frac{13\pi R^2}{630}
+\end{align}
+\end{subequations}
+
+\section{}
+
+El primer paso será tomar las tres ecuaciones a ocupar (equilibrio hidrostático, conservación de masa y ecuación de estado polítropa) y normalizarlas, de modo de eliminar constantes, unidades de medida y que las variables varien entre 1 y 0, facilitando así los calculos del programa. Las tres fórmulas a usar son:
+
+\begin{subequations}
+\begin{align}
+		\frac{dP}{dr}=-\frac{Gm(r)\rho (r)}{r^2} \\
+		\frac{dm}{dr}= 4\pi r^2 \rho (r) \\
+		P=k\rho^{\frac{n+1}{n}}
+\end{align}
+\end{subequations}
+
+Para normalizar debemos considerar que queremos dividir nuestras variables por una constante, de modo que:
+   
+\begin{subequations}
+\begin{align}
+	        P_n=\frac{P}{P_c} \\
+		\rho_n=\frac{\rho}{\rho_c} \\
+		m_n=\frac{m}{m_o} \\
+		r_n=\frac{r}{R_o}	
+\end{align}
+\end{subequations}
+
+Donde la constante $X_c$ representa esa variable en el centro y $X_o$ representa la variable total (ej. $m_o$ es la masa total). Entonces debemos reemplazar estas en las ecuaciones normales.
+
+En la ecuación hidrostática reemplazamos lo anterior, considerando que $dP=dP_n P_c$, de modo que:
+
+\begin{subequations}
+\begin{align}
+P_c\frac{dP_n}{dr_n}=- \frac{G\cdot m_n m_o \cdot \rho_n \rho_c }{r_o^2 r_n^2} \\
+\frac{dP_n}{dr_n}=-(\frac{G\cdot m_o \rho_c}{r_o^2 P_c}) \cdot \frac{\rho_n m_n}{r_n^2} \\
+(\frac{G\cdot m_o \rho_c}{r_o^2 P_c})=1 \\
+\frac{dP_n}{dr_n}=-\frac{\rho_n m_n}{r_n^2}
+\end{align}
+\end{subequations}
+
+
+
+
+
+Para normalizar la conservación de la masa primero recordar dos simples fórmulas, $\frac{\rho}{m}=\frac{1}{V}$ y que para una esfera $V=\frac{4}{3}\pi r^2$. Luego:
+
+\begin{subequations}
+\begin{align}
+\frac{m_o}{r_o}\frac{dm_n}{dr_n} = 4 \pi r^2_0 r^2_n \cdot \rho_c \rho_n \\
+\frac{dm_n}{dr_n}=(4\pi r^3_o \cdot \frac{\rho_c}{m_o})\cdot \rho_n r^2_n \\
+\frac{dm_n}{dr_n}=(3\cdot \frac{4\pi r^3_o}{3} \cdot \frac{\rho_c}{m_o})\cdot \rho_n r^2_n \\
+\frac{dm_n}{dr_n}=(3\cdot \frac{V}{V})\cdot \rho_n r^2_n \\
+\frac{dm_n}{dr_n}=3\cdot \rho_n \cdot r^2_n
+\end{align}
+\end{subequations}
+
+Para el caso de la polítropa se sigue un procedimiento de normalización un poco distinto:
+
+\begin{subequations}
+\begin{align}
+\frac{P=k \rho^{\frac{n+1}{n}}}{P_c=k\rho^{\frac{n+1}{n}}_c} \\
+P_n=\rho^{\frac{n+1}{n}}_n
+\end{align}
+\end{subequations}
+
+
+Por último será necesario aplicar una nueva ecuación para cuando el radio tiende a cero, esto se debe a que la ecuación hidrostática tiende a infinito para estos radios. Para evitar este problema se establecen condiciones de borde. La que usaremos para este caso será una ecuación lineal, suponiendo que la densidad aumenta linealmente a medida que se acerca al centro:
+
+\begin{equation}
+\frac{dP_n}{dr_n}=-r_n
+\end{equation}
+
+Entonces para resolver numericamente, debemos reemplazar los diferenciales por $\Delta$, a los cuales debemos entregarle un intervalo menor a 1 de modo que el programa pueda iterar los resultados varias veces. Los resultados obtenidos y sus interpretaciones estarán al final de este informe.
+
+
+
+
+\section{}
+\subsection*{a)}
+Los cientificos mencionados en el texto fueron:
+\begin{itemize}
+\item Sir James Jeans: En la licenciatura se ha estudiado la radiación de cuerpo negro y como esta es predicha por la ley de Planck. Una de las aproximaciones de esta fórmula, para bajas frecuencias/altas longitudes, es la ley de Rayleigh-Jeans $B_\lambda(T)=\frac{2ckT}{\lambda^4}$
+
+\item Nicolas Léonard Sadi Carnot: Conocido por el $"$ciclo de Carnot$"$ estudiado en termodinámica, este explica la relación Presión-Volumen en una máquina térmica que sufre cambios adiabáticos/isotérmicos, también se puede analizar el trabajo realizado por el sistema.
+
+\item Rudolf Clausius: Reescribió las leyes de la termodinámica conocidas hasta la época para que coincidieran con lo aprendido por el ciclo de Carnot, de modo que se mantuviera la conservación de la energía. Tambíen fundó matemáticamente el concepto de entropía.
+
+\item James Clerk Maxwel: Conocido por sus avances en el campo del electromagnetismo, se le conoce principalmente por las cuatro ecuaciones de Maxwell.
+
+\item Lord Rayleigh: Al igual que Sir James Jeans, en la licenciatura se le ha conocido por la ley de Rayleigh-Jeans.
+
+\item Eugene Parker: Conocido por estudios en el area de vientos solares y campo magnético del sol en las afueras del sistema solar.
+
+\item Subrahmanyan Chandrasekhar: Entre variados descubrimientos, por el cual se le conoce hasta ahora en la licenciatura es por el límite de  Chandrasekhar, el cual entrega la masa maxima posible por una enana blanca.
+
+\item Henri Poincaré: Algunos trabajos por los que se le conoce son el $"$problema de tres cuerpos$"$ y sus colaboraciones en relatividad (transformaciones de Laurentz).
+
+\end{itemize}
+
+\subsection*{b)}
+
+El virial se define como:
+
+\begin{equation}
+G=\sum^N_{k=1} \vec{p_k} \cdot \vec{r_k}
+\end{equation}
+
+Donde $p_k$ es el momentum de la partícula k y $r_k$ la posición de la misma.
+Por otro lado como sabemos el momento inercia se define como:
+
+\begin{equation}
+I=\sum^N_{k=1} m_k r^2_k
+\end{equation}
+
+Por lo tanto si nos vemos ambas sumatorias, notando que $p=m\cdot \frac{dr}{dt}$, es claro que G es la derivada del momento inercia:
+
+\begin{subequations}
+\begin{align}
+		G=\frac{1}{2} \frac{dI}{dt} =\frac{1}{2}\sum^N_{k=1} 2 m_k \frac{d \vec{r_k}}{dt} \cdot \vec{r_k} \\
+		G=\sum^N_{k=1} \vec{p_k} \cdot \vec{r_k}
+\end{align}
+\end{subequations}
+
+Luego derivando el virial:
+
+
+\begin{subequations}
+\begin{align}
+		 \frac{dG}{dt} = \sum^N_{k=1} \vec{p_k} \cdot \frac{d\vec{r_k}}{dt} +  \sum^N_{k=1} \frac{d\vec{p_k}}{dt} \cdot \vec{r_k} \\
+		 = \sum^N_{k=1} m_k \frac{d\vec{r_k}}{dt} \cdot \frac{d\vec{r_k}}{dt} + \sum^N_{k=1} \vec{F_k}\cdot \vec{r_k}
+\end{align}
+\end{subequations}
+
+Esto puede escribirse como:
+
+\begin{equation}
+\frac{dG}{dt}= 2T + \sum^N_{k=1} \vec{F_k}\cdot \vec{r_k}
+\end{equation}
+
+Y como $U=\sum^N_{k=1} \vec{F_k}\cdot \vec{r_k}$, luego se obtiene el teorema del virial esperado:
+
+\begin{equation}
+\frac{dG}{dt}=2T + U
+\end{equation}
+
+
+
+
+
+
+\end{document}

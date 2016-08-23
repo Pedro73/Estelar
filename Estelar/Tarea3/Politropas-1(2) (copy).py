@@ -25,7 +25,7 @@ def modelo(dr,n):
     nn=float(n)
     k=((8*pi*h**2)/(15*m_n))*((3)/(8*pi*m_n*c**2))**(5.0/3)
     P = k*rho**((nn+1)/nn) 
-    
+    PENE = 0
     m=0 
     dm=0 
     dP=0 
